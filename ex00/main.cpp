@@ -1,36 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: snair <snair@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/19 17:29:32 by snair             #+#    #+#             */
+/*   Updated: 2022/12/19 17:29:33 by snair            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "easyfind.hpp"
 
 int main(void)
 {
-	/*int						array1[7] = {1, 2, 3, 42, 69};
-	std::vector<int>		intVector1(array1, array1 + 5);
-	int 					toFind; 
+    int a[10] = { 11, 45, 6, 79, 36, 7, 4, 4, 52, 0};
+	int	arr[7] = {-74, 72, 32, 2000, -69};
+	
+    std::vector<int> arrvector(a, a + 10);
+    std::deque<int> arrdeque(a, a + 10);
+    std::list<int> arrlist(a, a + 10);
+	std::vector<int> vec2(arr, arr + 5);
 
-	if (ac != 2)
+    try
 	{
-		std::cout << "./easyfind [ToFind]" << std::endl;
-		return (0);
+		easyfind(arrvector, 79);
+    	easyfind(arrdeque, 4);
+    	easyfind(arrlist, 45);
+		easyfind(arrvector, 100);
 	}
-	toFind = atoi(av[1]);
-	std::vector<int>::iterator number1 = easyfind(intVector1, toFind);*/
-    int a[] = { 1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
-
-    std::array<int , 10> myarray = {1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
-    std::vector<int> myvector(a, a + 10);
-    std::deque<int> mydeque(a, a + 10);
-    std::list<int> mylist(a, a + 10);
-
-    easyfind(myarray, 1);
-    easyfind(myvector, 5);
-    easyfind(myvector, 8);
-    easyfind(mydeque, 9);
-    easyfind(mylist, 0);
-
-    easyfind(myarray, 100);
-    easyfind(myvector, 100);
-    easyfind(myvector, 100);
-    easyfind(mydeque, 100);
-    easyfind(mylist, 100);
-
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+    std::cout << std::endl;
+    std::cout << "vec2 tests" << std::endl;
+	try
+	{
+		easyfind(vec2, -69);
+        easyfind(vec2, -74);
+        easyfind(vec2, 2000);
+        easyfind(vec2, -70);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
     return (0);
 }
